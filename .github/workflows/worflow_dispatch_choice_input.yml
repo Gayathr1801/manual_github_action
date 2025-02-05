@@ -8,9 +8,9 @@ on:
         defualt: 'production'
         type: choice
         options:
-          -dev
-          -production
-          -qa
+          - dev
+          - production
+          - qa
 
 
 jobs:
