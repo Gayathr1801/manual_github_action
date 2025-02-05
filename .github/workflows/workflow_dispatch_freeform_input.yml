@@ -1,0 +1,14 @@
+name: Workflow dispatch freeform input example
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'the environment to deploy to'
+        required: true
+        defualy: 'production'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Deploing to ${{github.event.inputs.environment}} environment"
