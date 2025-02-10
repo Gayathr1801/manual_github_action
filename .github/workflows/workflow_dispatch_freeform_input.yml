@@ -5,7 +5,7 @@ on:
       environment:
         description: 'the environment to deploy to'
         required: true
-        defualt: 'production'
+        default: 'production'
 
 jobs:
   deploy:
