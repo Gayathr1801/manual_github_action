@@ -1,0 +1,40 @@
+name: Run Script and Push Changes
+
+on: 
+  workflow_dispatch:   
+    inputs:
+      bff_version:
+        description: 'Enter the bff_version'
+        required: true  
+        default: 'v1.0.0-rc'  
+        
+permissions:
+  contents: write 
+
+jobs:
+  create_rc_and_push:
+    runs-on: ubuntu-latest  
+
+    steps:
+    - name: Checkout the codebase
+      uses: actions/checkout@v3  
+
+    - name: Set up Git for authentication
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        
+    - name: Run createRc.sh script
+      run: |
+        chmod +x ./createRc.sh  # Make sure the script is executable
+        ./createRc.sh -b ${{ github.event.inputs.bff_version }}  # Run the script with the version input
+
+    - name: Verify changes before pushing
+      run: |
+        git status  # Verify what has been modified in the working directory (optional step for checking)
+
+    - name: Commit and push changes
+      run: |
+        git add .  # Stage all changes
+        git commit -m "Automated update by GitHub Actions: Creating RC for version ${{ github.event.inputs.bff_version }}"  # Commit the changes
+        git push origin HEAD  # Push to the current branch (or use a specific branch if needed)
