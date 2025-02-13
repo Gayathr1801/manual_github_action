@@ -26,15 +26,15 @@ jobs:
         
     - name: Run createRc.sh script
       run: |
-        chmod +x ./createRc.sh  # Make sure the script is executable
-        ./createRc.sh -b ${{ github.event.inputs.bff_version }}  # Run the script with the version input
+        chmod +x ./scripts/createRc.sh 
+        ./createRc.sh -b ${{ github.event.inputs.bff_version }}  
 
     - name: Verify changes before pushing
       run: |
-        git status  # Verify what has been modified in the working directory (optional step for checking)
+        git status  
 
     - name: Commit and push changes
       run: |
-        git add .  # Stage all changes
-        git commit -m "Automated update by GitHub Actions: Creating RC for version ${{ github.event.inputs.bff_version }}"  # Commit the changes
-        git push origin HEAD  # Push to the current branch (or use a specific branch if needed)
+        git add . 
+        git commit -m "Automated update by GitHub Actions: Creating RC for version ${{ github.event.inputs.bff_version }}"  
+        git push origin HEAD  
