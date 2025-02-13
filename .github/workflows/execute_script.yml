@@ -29,12 +29,12 @@ jobs:
         chmod +x ./script/createRc.sh 
         ./script/createRc.sh -b ${{ github.event.inputs.bff_version }}  
 
-    - name: Verify changes before pushing
-      run: |
-        git status  
+   # - name: Verify changes before pushing
+    #  run: |
+     #   git status  
 
-    - name: Commit and push changes
-      run: |
-        git add . 
-        git commit -m "Automated update by GitHub Actions: Creating RC for version ${{ github.event.inputs.bff_version }}"  
-        git push origin HEAD  
+    #- name: Commit and push changes
+     # run: |
+      #  git add . 
+       # git commit -m "Automated update by GitHub Actions: Creating RC for version ${{ github.event.inputs.bff_version }}"  
+        #git push origin HEAD  
