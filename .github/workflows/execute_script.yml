@@ -27,7 +27,7 @@ jobs:
     - name: Run createRc.sh script
       run: |
         chmod +x ./script/createRc.sh 
-        ./createRc.sh -b ${{ github.event.inputs.bff_version }}  
+        ./script/createRc.sh -b ${{ github.event.inputs.bff_version }}  
 
     - name: Verify changes before pushing
       run: |
